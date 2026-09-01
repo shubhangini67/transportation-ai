@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 620" role="img" aria-label="Tech stack who does what">
+  <rect width="1180" height="620" rx="18" fill="#F6F1E8"/>
+  <rect x="1" y="1" width="1178" height="618" rx="18" fill="none" stroke="#E4D9C8" stroke-width="2"/>
+
+  <text x="40" y="46" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#1F3D32">Tech stack - who does what</text>
+  <text x="40" y="72" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6B6258">Each box is one real piece of the product. Spring Boot owns data. C# only scores. Kubernetes runs all four processes.</text>
+
+  <!-- row 1 -->
+  <rect x="36" y="96" width="270" height="150" rx="12" fill="#FFFDF9" stroke="#E07020" stroke-width="1.6"/>
+  <text x="52" y="124" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#E07020" letter-spacing="1.1">LANGUAGE</text>
+  <text x="52" y="152" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#1C1917">Java 17</text>
+  <text x="52" y="176" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#5C5348">tms-backend/</text>
+  <text x="52" y="206" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">Every product API: trips,</text>
+  <text x="52" y="224" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">GPS, invoices, Copilot, JWT.</text>
+
+  <rect x="322" y="96" width="270" height="150" rx="12" fill="#FFFDF9" stroke="#6DB33F" stroke-width="1.6"/>
+  <text x="338" y="124" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#3D7A3C" letter-spacing="1.1">FRAMEWORK</text>
+  <text x="338" y="152" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#1C1917">Spring Boot 3.2</text>
+  <text x="338" y="176" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#5C5348">Security + JPA + WebSocket</text>
+  <text x="338" y="206" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">System of record. React and</text>
+  <text x="338" y="224" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">C# both go through here.</text>
+
+  <rect x="608" y="96" width="270" height="150" rx="12" fill="#FFFDF9" stroke="#239120" stroke-width="1.6"/>
+  <text x="624" y="124" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#239120" letter-spacing="1.1">LANGUAGE</text>
+  <text x="624" y="152" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#1C1917">C#</text>
+  <text x="624" y="176" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#5C5348">tms-dotnet-reports/</text>
+  <text x="624" y="206" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">Ranks truck-driver pairs and</text>
+  <text x="624" y="224" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">fleet health. No database.</text>
+
+  <rect x="894" y="96" width="250" height="150" rx="12" fill="#FFFDF9" stroke="#512BD4" stroke-width="1.6"/>
+  <text x="910" y="124" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#512BD4" letter-spacing="1.1">FRAMEWORK</text>
+  <text x="910" y="152" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="700" fill="#1C1917">ASP.NET Core 8</text>
+  <text x="910" y="176" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#5C5348">.NET 8  |  internal API key</text>
+  <text x="910" y="206" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">POST /dispatch/recommend</text>
+  <text x="910" y="224" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">POST /insights/fleet</text>
+
+  <!-- row 2 -->
+  <rect x="36" y="266" width="270" height="150" rx="12" fill="#FFFDF9" stroke="#61DAFB" stroke-width="1.6"/>
+  <text x="52" y="294" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#0E7490" letter-spacing="1.1">UI</text>
+  <text x="52" y="322" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#1C1917">React 18</text>
+  <text x="52" y="346" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#5C5348">tms-frontend/</text>
+  <text x="52" y="376" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">Control room, maps, Copilot.</text>
+  <text x="52" y="394" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">Never calls C# directly.</text>
+
+  <rect x="322" y="266" width="270" height="150" rx="12" fill="#FFFDF9" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="338" y="294" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#336791" letter-spacing="1.1">DATABASE</text>
+  <text x="338" y="322" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#1C1917">PostgreSQL 16</text>
+  <text x="338" y="346" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#5C5348">Flyway V1-V13 in prod</text>
+  <text x="338" y="376" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">Trips, GPS history, invoices.</text>
+  <text x="338" y="394" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">H2 + seeder for local dev.</text>
+
+  <rect x="608" y="266" width="270" height="150" rx="12" fill="#FFFDF9" stroke="#326CE5" stroke-width="1.6"/>
+  <text x="624" y="294" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#326CE5" letter-spacing="1.1">ORCHESTRATION</text>
+  <text x="624" y="322" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#1C1917">Kubernetes</text>
+  <text x="624" y="346" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#5C5348">Kind cluster  tms  |  k8s/</text>
+  <text x="624" y="376" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">Four pods, NodePort 30080,</text>
+  <text x="624" y="394" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">HPA on Java and C# services.</text>
+
+  <rect x="894" y="266" width="250" height="150" rx="12" fill="#FFFDF9" stroke="#2496ED" stroke-width="1.6"/>
+  <text x="910" y="294" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#2496ED" letter-spacing="1.1">PACKAGING</text>
+  <text x="910" y="322" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#1C1917">Docker</text>
+  <text x="910" y="346" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#5C5348">One image per service</text>
+  <text x="910" y="376" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">Compose for laptop, Kind</text>
+  <text x="910" y="394" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">for the same four images.</text>
+
+  <!-- row 3 -->
+  <rect x="36" y="436" width="270" height="150" rx="12" fill="#FFFDF9" stroke="#C45C26" stroke-width="1.6"/>
+  <text x="52" y="464" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#C45C26" letter-spacing="1.1">EDGE</text>
+  <text x="52" y="492" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#1C1917">Nginx</text>
+  <text x="52" y="516" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#5C5348">inside the frontend image</text>
+  <text x="52" y="546" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">Serves the SPA. Proxies</text>
+  <text x="52" y="564" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">/api and /ws to Spring.</text>
+
+  <rect x="322" y="436" width="270" height="150" rx="12" fill="#FFFDF9" stroke="#1F3D32" stroke-width="1.6"/>
+  <text x="338" y="464" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#1F3D32" letter-spacing="1.1">REALTIME</text>
+  <text x="338" y="492" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#1C1917">STOMP + SockJS</text>
+  <text x="338" y="516" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#5C5348">Spring WebSocket</text>
+  <text x="338" y="546" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">Live GPS on the map and</text>
+  <text x="338" y="564" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">notification bell push.</text>
+
+  <rect x="608" y="436" width="270" height="150" rx="12" fill="#FFFDF9" stroke="#0F766E" stroke-width="1.6"/>
+  <text x="624" y="464" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#0F766E" letter-spacing="1.1">AUTH</text>
+  <text x="624" y="492" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#1C1917">JWT + RBAC</text>
+  <text x="624" y="516" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#5C5348">4 roles  |  X-Tenant-ID</text>
+  <text x="624" y="546" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">Rotating refresh tokens.</text>
+  <text x="624" y="564" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">Optional Google / Microsoft.</text>
+
+  <rect x="894" y="436" width="250" height="150" rx="12" fill="#FFFDF9" stroke="#5B21B6" stroke-width="1.6"/>
+  <text x="910" y="464" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#5B21B6" letter-spacing="1.1">CI</text>
+  <text x="910" y="492" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="700" fill="#1C1917">GitHub Actions</text>
+  <text x="910" y="516" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#5C5348">.github/workflows/</text>
+  <text x="910" y="546" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">mvn test on Spring Boot.</text>
+  <text x="910" y="564" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">dotnet build on ASP.NET.</text>
+</svg>

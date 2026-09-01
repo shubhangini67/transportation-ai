@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tms-backend
+  namespace: tms
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 0
+  selector:
+    matchLabels:
+      app: tms-backend
+  template:
+    metadata:
+      labels:
+        app: tms-backend
+    spec:
+      initContainers:
+        - name: wait-for-postgres
+          image: postgres:16-alpine
+          command: ["sh", "-c", "until pg_isready -h tms-postgres -U tms -d tmsdb; do sleep 2; done"]
+      containers:
+        - name: backend
+          image: tms-backend:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: tms-config
+            - secretRef:
+                name: tms-secrets
+          readinessProbe:
+            httpGet:
+              path: /v3/api-docs
+              port: 8080
+            initialDelaySeconds: 50
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 12
+          livenessProbe:
+            httpGet:
+              path: /v3/api-docs
+              port: 8080
+            initialDelaySeconds: 120
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 6
+          resources:
+            requests:
+              cpu: 200m
+              memory: 512Mi
+            limits:
+              cpu: "1"
+              memory: 768Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tms-backend
+  namespace: tms
+spec:
+  selector:
+    app: tms-backend
+  ports:
+    - port: 8080
+      targetPort: 8080

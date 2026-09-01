@@ -1,0 +1,140 @@
+# ============================================================
+# Release — Build, Push Docker Images & Create GitHub Release
+# Triggered on version tags (e.g., v1.0.0).
+# Pushes images to GitHub Container Registry (ghcr.io).
+# ============================================================
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  # ── Step 1: Run all tests ──
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - name: backend
+            working-directory: tms-backend
+          - name: frontend
+            working-directory: tms-frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      # Backend tests
+      - name: Set up JDK 17
+        if: matrix.name == 'backend'
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Backend Tests
+        if: matrix.name == 'backend'
+        run: mvn verify -B --no-transfer-progress
+        working-directory: ${{ matrix.working-directory }}
+
+      # Frontend tests
+      - name: Set up Node 18
+        if: matrix.name == 'frontend'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: tms-frontend/package-lock.json
+
+      - name: Frontend Tests
+        if: matrix.name == 'frontend'
+        run: |
+          npm ci
+          npm test -- --ci --watchAll=false
+        working-directory: ${{ matrix.working-directory }}
+        env:
+          CI: true
+
+  # ── Step 2: Build & Push Docker Images to GHCR ──
+  build-and-push:
+    needs: test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - image: tms-backend
+            context: ./tms-backend
+            dockerfile: ./tms-backend/Dockerfile
+          - image: tms-frontend
+            context: ./tms-frontend
+            dockerfile: ./tms-frontend/Dockerfile
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels)
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ matrix.image }}
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=raw,value=latest
+
+      - name: Build & Push
+        uses: docker/build-push-action@v6
+        with:
+          context: ${{ matrix.context }}
+          file: ${{ matrix.dockerfile }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            REACT_APP_API_BASE_URL=/api/v1
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ── Step 3: Create GitHub Release ──
+  create-release:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          body: |
+            ## Docker Images
+
+            ```bash
+            # Pull images
+            docker pull ${{ env.REGISTRY }}/${{ github.repository_owner }}/tms-backend:${{ github.ref_name }}
+            docker pull ${{ env.REGISTRY }}/${{ github.repository_owner }}/tms-frontend:${{ github.ref_name }}
+            ```
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 640" role="img" aria-label="Domain model">
+  <rect width="1180" height="640" rx="18" fill="#F6F1E8"/>
+  <rect x="1" y="1" width="1178" height="638" rx="18" fill="none" stroke="#E4D9C8" stroke-width="2"/>
+
+  <text x="40" y="46" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#1F3D32">Domain model - what the control room is about</text>
+  <text x="40" y="72" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6B6258">Most rows carry tenant_id. Trip is the hub: it locks a truck, carries bookings, costs, waybill, invoice, and GPS trail.</text>
+
+  <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif">
+    <!-- Tenant / User -->
+    <rect x="36" y="100" width="170" height="88" rx="10" fill="#FFFDF9" stroke="#D9D0C4"/>
+    <text x="52" y="124" font-size="13" font-weight="700" fill="#1F3D32">Tenant</text>
+    <text x="52" y="146" font-size="11.5" fill="#6B6258">X-Tenant-ID</text>
+    <text x="52" y="166" font-size="11.5" fill="#6B6258">active flag</text>
+
+    <rect x="226" y="100" width="170" height="88" rx="10" fill="#FFFDF9" stroke="#D9D0C4"/>
+    <text x="242" y="124" font-size="13" font-weight="700" fill="#1F3D32">User</text>
+    <text x="242" y="146" font-size="11.5" fill="#6B6258">ADMIN DISPATCHER</text>
+    <text x="242" y="166" font-size="11.5" fill="#6B6258">DRIVER CLIENT</text>
+
+    <rect x="416" y="100" width="170" height="88" rx="10" fill="#FFFDF9" stroke="#D9D0C4"/>
+    <text x="432" y="124" font-size="13" font-weight="700" fill="#1F3D32">Driver</text>
+    <text x="432" y="146" font-size="11.5" fill="#6B6258">linked User</text>
+    <text x="432" y="166" font-size="11.5" fill="#6B6258">licence | status</text>
+
+    <rect x="606" y="100" width="170" height="88" rx="10" fill="#FFFDF9" stroke="#D9D0C4"/>
+    <text x="622" y="124" font-size="13" font-weight="700" fill="#1F3D32">Vehicle</text>
+    <text x="622" y="146" font-size="11.5" fill="#6B6258">AVAILABLE / BUSY</text>
+    <text x="622" y="166" font-size="11.5" fill="#6B6258">capacity</text>
+
+    <rect x="796" y="100" width="170" height="88" rx="10" fill="#FFFDF9" stroke="#D9D0C4"/>
+    <text x="812" y="124" font-size="13" font-weight="700" fill="#1F3D32">Route</text>
+    <text x="812" y="146" font-size="11.5" fill="#6B6258">origin | destination</text>
+    <text x="812" y="166" font-size="11.5" fill="#6B6258">distance km</text>
+
+    <rect x="986" y="100" width="158" height="88" rx="10" fill="#FFFDF9" stroke="#D9D0C4"/>
+    <text x="1002" y="124" font-size="13" font-weight="700" fill="#1F3D32">Geofence</text>
+    <text x="1002" y="146" font-size="11.5" fill="#6B6258">lat lng radius</text>
+    <text x="1002" y="166" font-size="11.5" fill="#6B6258">enter / exit</text>
+
+    <!-- Trip hub -->
+    <rect x="416" y="248" width="360" height="120" rx="14" fill="#1F3D32"/>
+    <text x="596" y="286" font-size="18" font-weight="700" fill="#FFF" text-anchor="middle">Trip  (the run)</text>
+    <text x="596" y="312" font-size="12.5" fill="#D7E4DC" text-anchor="middle">PLANNED | IN_PROGRESS | COMPLETED</text>
+    <text x="596" y="336" font-size="12.5" fill="#D7E4DC" text-anchor="middle">toggles Vehicle AVAILABLE | BUSY</text>
+    <text x="596" y="356" font-size="12" fill="#C45C26" text-anchor="middle">BIGSERIAL id  |  optional route_id</text>
+
+    <!-- spokes -->
+    <rect x="36" y="248" width="170" height="88" rx="10" fill="#FFFDF9" stroke="#D9D0C4"/>
+    <text x="52" y="272" font-size="13" font-weight="700" fill="#1F3D32">Booking</text>
+    <text x="52" y="294" font-size="11.5" fill="#6B6258">seat / capacity check</text>
+    <text x="52" y="314" font-size="11.5" fill="#6B6258">CLIENT flow</text>
+
+    <rect x="226" y="248" width="170" height="88" rx="10" fill="#FFFDF9" stroke="#D9D0C4"/>
+    <text x="242" y="272" font-size="13" font-weight="700" fill="#1F3D32">Expense</text>
+    <text x="242" y="294" font-size="11.5" fill="#6B6258">FUEL | analytics</text>
+    <text x="242" y="314" font-size="11.5" fill="#6B6258">invoice line items</text>
+
+    <rect x="796" y="248" width="170" height="88" rx="10" fill="#FFFDF9" stroke="#D9D0C4"/>
+    <text x="812" y="272" font-size="13" font-weight="700" fill="#1F3D32">LorryReceipt</text>
+    <text x="812" y="294" font-size="11.5" fill="#6B6258">waybill + PDF</text>
+    <text x="812" y="314" font-size="11.5" fill="#6B6258">tracking token</text>
+
+    <rect x="986" y="248" width="158" height="88" rx="10" fill="#FFFDF9" stroke="#D9D0C4"/>
+    <text x="1002" y="272" font-size="13" font-weight="700" fill="#1F3D32">Invoice</text>
+    <text x="1002" y="294" font-size="11.5" fill="#6B6258">DRAFT | PAID</text>
+    <text x="1002" y="314" font-size="11.5" fill="#6B6258">tax + PDF</text>
+
+    <rect x="36" y="420" width="210" height="88" rx="10" fill="#FFFDF9" stroke="#D9D0C4"/>
+    <text x="52" y="444" font-size="13" font-weight="700" fill="#1F3D32">LocationHistory</text>
+    <text x="52" y="466" font-size="11.5" fill="#6B6258">lat lng ts</text>
+    <text x="52" y="486" font-size="11.5" fill="#6B6258">breadcrumb trail</text>
+
+    <rect x="266" y="420" width="210" height="88" rx="10" fill="#FFFDF9" stroke="#D9D0C4"/>
+    <text x="282" y="444" font-size="13" font-weight="700" fill="#1F3D32">ProofOfDelivery</text>
+    <text x="282" y="466" font-size="11.5" fill="#6B6258">GPS stamp</text>
+    <text x="282" y="486" font-size="11.5" fill="#6B6258">photo attachment</text>
+
+    <rect x="496" y="420" width="210" height="88" rx="10" fill="#FFFDF9" stroke="#D9D0C4"/>
+    <text x="512" y="444" font-size="13" font-weight="700" fill="#1F3D32">GeofenceEvent</text>
+    <text x="512" y="466" font-size="11.5" fill="#6B6258">enter / exit log</text>
+    <text x="512" y="486" font-size="11.5" fill="#6B6258">GEOFENCE_ALERT</text>
+
+    <rect x="726" y="420" width="210" height="88" rx="10" fill="#FFFDF9" stroke="#D9D0C4"/>
+    <text x="742" y="444" font-size="13" font-weight="700" fill="#1F3D32">FileAttachment</text>
+    <text x="742" y="466" font-size="11.5" fill="#6B6258">TRIP VEHICLE LR</text>
+    <text x="742" y="486" font-size="11.5" fill="#6B6258">polymorphic</text>
+
+    <rect x="956" y="420" width="188" height="88" rx="10" fill="#FFFDF9" stroke="#D9D0C4"/>
+    <text x="972" y="444" font-size="13" font-weight="700" fill="#1F3D32">Notification</text>
+    <text x="972" y="466" font-size="11.5" fill="#6B6258">per-user inbox</text>
+    <text x="972" y="486" font-size="11.5" fill="#6B6258">STOMP push</text>
+
+    <rect x="36" y="536" width="1108" height="72" rx="10" fill="#EFE8DC"/>
+    <text x="56" y="566" font-size="13" fill="#3F4A44">Lifecycle rule: completing a trip frees the truck. Booking confirm checks remaining vehicle capacity. Invoice generateFromTrip() rolls expenses into taxed line items.</text>
+    <text x="56" y="588" font-size="13" fill="#3F4A44">C# does not own tables - it scores a snapshot Spring already loaded. Copilot also reads live rows; it is not a second database.</text>
+  </g>
+</svg>

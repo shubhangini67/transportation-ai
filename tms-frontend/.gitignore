@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Build output
+build/
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Keep the example env file
+!.env.example
+
+# Test coverage
+coverage/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Misc
+*.tmp
+*.bak
+

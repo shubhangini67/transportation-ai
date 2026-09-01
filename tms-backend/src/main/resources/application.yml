@@ -1,0 +1,97 @@
+spring:
+  application:
+    name: tms-backend
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO:update}
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  flyway:
+    enabled: ${FLYWAY_ENABLED:false}
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:noreply@tms.com}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID:placeholder}
+            client-secret: ${GOOGLE_CLIENT_SECRET:placeholder}
+            scope: openid, email, profile
+            redirect-uri: "{baseUrl}/api/v1/auth/oauth2/callback/{registrationId}"
+          microsoft:
+            client-id: ${MICROSOFT_CLIENT_ID:placeholder}
+            client-secret: ${MICROSOFT_CLIENT_SECRET:placeholder}
+            scope: openid, email, profile
+            redirect-uri: "{baseUrl}/api/v1/auth/oauth2/callback/{registrationId}"
+            client-name: Microsoft
+            authorization-grant-type: authorization_code
+            provider: microsoft
+        provider:
+          microsoft:
+            authorization-uri: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+            token-uri: https://login.microsoftonline.com/common/oauth2/v2.0/token
+            jwk-set-uri: https://login.microsoftonline.com/common/discovery/v2.0/keys
+            user-info-uri: https://graph.microsoft.com/oidc/userinfo
+            user-name-attribute: sub
+
+server:
+  port: ${SERVER_PORT:8080}
+
+app:
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000,http://127.0.0.1:3000,http://localhost:43123,http://127.0.0.1:43123,https://*.trycloudflare.com}
+  jwt:
+    secret: ${JWT_SECRET:Y2hhbmdlLXRoaXMtaW4tcHJvZHVjdGlvbi10by1hLXNlY3VyZS1yYW5kb20ta2V5LWF0LWxlYXN0LTI1Ni1iaXRz}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+    refresh-expiration-ms: ${JWT_REFRESH_EXPIRATION_MS:604800000}
+  gps:
+    simulator: ${GPS_SIMULATOR:true}
+  ai:
+    grok-api-key: ${GROK_API_KEY:${XAI_API_KEY:}}
+    grok-model: ${GROK_MODEL:grok-3-mini}
+    gemini-api-key: ${GEMINI_API_KEY:}
+    gemini-model: ${GEMINI_MODEL:gemini-2.0-flash}
+    groq-api-key: ${GROQ_API_KEY:}
+    groq-model: ${GROQ_MODEL:openai/gpt-oss-20b}
+    ollama-url: ${OLLAMA_URL:}
+    ollama-model: ${OLLAMA_MODEL:llama3.2}
+  email:
+    enabled: ${EMAIL_ENABLED:false}
+  oauth2:
+    frontend-redirect-url: ${OAUTH2_FRONTEND_REDIRECT_URL:http://localhost:3000/oauth2/callback}
+  dotnet:
+    enabled: ${DOTNET_REPORTS_ENABLED:true}
+    reports-url: ${DOTNET_REPORTS_URL:http://localhost:5080}
+    api-key: ${DOTNET_REPORTS_API_KEY:tms-internal-dev-key}
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+
+logging:
+  level:
+    root: INFO
+    com.tms: ${LOG_LEVEL:INFO}
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

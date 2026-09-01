@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 560" role="img" aria-label="High-level architecture">
+  <rect width="1180" height="560" rx="18" fill="#F6F1E8"/>
+  <rect x="1" y="1" width="1178" height="558" rx="18" fill="none" stroke="#E4D9C8" stroke-width="2"/>
+
+  <text x="40" y="48" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#1F3D32">High-level architecture</text>
+  <text x="40" y="74" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6B6258">Four processes. The browser talks only to Nginx and Spring Boot. C# is an internal scoring service - not a second login.</text>
+
+  <defs>
+    <marker id="a" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" fill="#3F4A44"/></marker>
+  </defs>
+
+  <!-- 1 Client -->
+  <rect x="36" y="150" width="248" height="220" rx="14" fill="#FFFDF9" stroke="#D9D0C4"/>
+  <rect x="36" y="150" width="248" height="40" rx="14" fill="#0F766E"/>
+  <rect x="36" y="174" width="248" height="16" fill="#0F766E"/>
+  <text x="52" y="176" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" letter-spacing="1.2">1  PRESENTATION</text>
+  <text x="56" y="218" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="700" fill="#1C1917">React 18 SPA</text>
+  <text x="56" y="240" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#5C5348">tms-frontend</text>
+  <text x="56" y="256" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">Control room + Copilot widget</text>
+  <text x="56" y="278" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">Axios JWT interceptor</text>
+  <text x="56" y="300" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">Leaflet maps  |  STOMP client</text>
+  <text x="56" y="338" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11.5" fill="#0F766E">Roles: Admin | Dispatcher | Driver | Customer</text>
+
+  <!-- 2 Edge -->
+  <rect x="328" y="178" width="196" height="164" rx="14" fill="#FFFDF9" stroke="#D9D0C4"/>
+  <rect x="328" y="178" width="196" height="40" rx="14" fill="#059669"/>
+  <rect x="328" y="202" width="196" height="16" fill="#059669"/>
+  <text x="344" y="204" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" letter-spacing="1.2">2  EDGE</text>
+  <text x="348" y="248" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="700" fill="#1C1917">Nginx</text>
+  <text x="348" y="270" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#5C5348">port 80  |  SPA fallback</text>
+  <text x="348" y="286" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">/        |  index.html</text>
+  <text x="348" y="308" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">/api  /ws  |  Spring</text>
+
+  <!-- 3 Core -->
+  <rect x="568" y="118" width="328" height="304" rx="14" fill="#FFFDF9" stroke="#D9D0C4"/>
+  <rect x="568" y="118" width="328" height="40" rx="14" fill="#1F3D32"/>
+  <rect x="568" y="142" width="328" height="16" fill="#1F3D32"/>
+  <text x="584" y="144" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" letter-spacing="1.2">3  SYSTEM OF RECORD</text>
+  <text x="588" y="186" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="700" fill="#1C1917">Spring Boot 3.2</text>
+  <text x="588" y="208" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#5C5348">Java 17  |  tms-backend</text>
+  <text x="588" y="226" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">REST  /api/v1   |   STOMP  /ws</text>
+  <text x="588" y="248" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">JWT  |  RBAC  |  X-Tenant-ID</text>
+  <text x="588" y="270" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">Copilot  |  GPS  |  invoices  |  PDF</text>
+
+  <rect x="588" y="292" width="288" height="108" rx="10" fill="#EEF4F0" stroke="#C5D4CB"/>
+  <text x="604" y="318" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14" font-weight="700" fill="#1F3D32">PostgreSQL 16</text>
+  <text x="604" y="340" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#5C5348">Flyway V1-V13 in prod</text>
+  <text x="604" y="360" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#5C5348">H2 + DataSeeder in local dev</text>
+  <text x="604" y="380" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#5C5348">JPA entities | response DTOs</text>
+
+  <!-- 4 Score -->
+  <rect x="940" y="168" width="204" height="184" rx="14" fill="#FFFDF9" stroke="#D9D0C4"/>
+  <rect x="940" y="168" width="204" height="40" rx="14" fill="#5B21B6"/>
+  <rect x="940" y="192" width="204" height="16" fill="#5B21B6"/>
+  <text x="956" y="194" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" letter-spacing="1.2">4  OPTIMIZATION</text>
+  <text x="956" y="236" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#1C1917">ASP.NET Core 8</text>
+  <text x="956" y="258" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#5C5348">C#  |  tms-dotnet-reports</text>
+  <text x="956" y="276" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#3F4A44">POST /dispatch/recommend</text>
+  <text x="956" y="296" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#3F4A44">POST /insights/fleet</text>
+  <text x="956" y="326" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11.5" fill="#5B21B6">X-Internal-Api-Key only</text>
+
+  <!-- arrows -->
+  <line x1="284" y1="260" x2="322" y2="260" stroke="#3F4A44" stroke-width="2" marker-end="url(#a)"/>
+  <text x="286" y="250" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10.5" fill="#6B6258">HTTPS</text>
+
+  <line x1="524" y1="260" x2="562" y2="260" stroke="#3F4A44" stroke-width="2" marker-end="url(#a)"/>
+  <text x="526" y="250" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10.5" fill="#6B6258">proxy</text>
+
+  <line x1="896" y1="248" x2="934" y2="248" stroke="#3F4A44" stroke-width="2" marker-end="url(#a)"/>
+  <text x="892" y="238" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10.5" fill="#6B6258">snapshot</text>
+
+  <line x1="934" y1="292" x2="896" y2="292" stroke="#C45C26" stroke-width="2" marker-end="url(#a)"/>
+  <text x="888" y="312" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10.5" fill="#C45C26">ranked plan</text>
+
+  <rect x="36" y="500" width="1108" height="36" rx="8" fill="#EFE8DC"/>
+  <text x="52" y="523" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">Rule: React never calls C# directly. If the .NET service is down, Spring Boot still serves Assign and Insights with a Java fallback.</text>
+</svg>

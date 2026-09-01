@@ -1,0 +1,60 @@
+# ============================================================
+# CodeQL — Security & Code Quality Scanning
+# Scans Java (backend) and JavaScript (frontend) for
+# vulnerabilities, bugs, and anti-patterns.
+# Runs on pushes/PRs to main + weekly schedule.
+# ============================================================
+name: CodeQL
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 6 * * 1'   # Every Monday at 06:00 UTC
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - language: java-kotlin
+            build-mode: manual
+          - language: javascript-typescript
+            build-mode: none
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: ${{ matrix.build-mode }}
+
+      # Manual build for Java (Maven)
+      - name: Set up JDK 17
+        if: matrix.language == 'java-kotlin'
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Build Backend
+        if: matrix.language == 'java-kotlin'
+        run: mvn compile -B --no-transfer-progress -f tms-backend/pom.xml
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: '/language:${{ matrix.language }}'
+

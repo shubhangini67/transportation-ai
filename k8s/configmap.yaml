@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tms-config
+  namespace: tms
+data:
+  SPRING_PROFILES_ACTIVE: "prod"
+  DB_URL: "jdbc:postgresql://tms-postgres:5432/tmsdb"
+  DB_USERNAME: "tms"
+  CORS_ALLOWED_ORIGINS: "http://localhost,http://localhost:3000,http://localhost:8080,http://localhost:30080"
+  SERVER_PORT: "8080"
+  DOTNET_REPORTS_URL: "http://tms-dotnet-reports:8080"
+  ASPNETCORE_URLS: "http://+:8080"

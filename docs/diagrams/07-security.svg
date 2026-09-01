@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 420" role="img" aria-label="Security architecture">
+  <rect width="1180" height="420" rx="18" fill="#F6F1E8"/>
+  <rect x="1" y="1" width="1178" height="418" rx="18" fill="none" stroke="#E4D9C8" stroke-width="2"/>
+
+  <text x="40" y="46" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#1F3D32">Security architecture</text>
+  <text x="40" y="72" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6B6258">Stateless JWT at the edge of Spring, method-level roles on controllers, tenant header on every call, internal key to C#.</text>
+
+  <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif">
+    <rect x="36" y="100" width="160" height="100" rx="12" fill="#FFFDF9" stroke="#D9D0C4"/>
+    <text x="116" y="140" font-size="13" font-weight="700" fill="#1C1917" text-anchor="middle">Login / OAuth2</text>
+    <text x="116" y="162" font-size="11.5" fill="#6B6258" text-anchor="middle">BCrypt  |  Google</text>
+    <text x="116" y="180" font-size="11.5" fill="#6B6258" text-anchor="middle">Microsoft optional</text>
+
+    <rect x="228" y="100" width="160" height="100" rx="12" fill="#FFFDF9" stroke="#C45C26" stroke-width="1.5"/>
+    <text x="308" y="140" font-size="13" font-weight="700" fill="#1C1917" text-anchor="middle">Access JWT</text>
+    <text x="308" y="162" font-size="11.5" fill="#6B6258" text-anchor="middle">short-lived</text>
+    <text x="308" y="180" font-size="11.5" fill="#6B6258" text-anchor="middle">role claims</text>
+
+    <rect x="420" y="100" width="180" height="100" rx="12" fill="#FFFDF9" stroke="#D9D0C4"/>
+    <text x="510" y="140" font-size="13" font-weight="700" fill="#1C1917" text-anchor="middle">Refresh rotation</text>
+    <text x="510" y="162" font-size="11.5" fill="#6B6258" text-anchor="middle">RefreshToken entity</text>
+    <text x="510" y="180" font-size="11.5" fill="#6B6258" text-anchor="middle">Axios silent retry</text>
+
+    <rect x="632" y="100" width="170" height="100" rx="12" fill="#FFFDF9" stroke="#D9D0C4"/>
+    <text x="717" y="140" font-size="13" font-weight="700" fill="#1C1917" text-anchor="middle">TenantFilter</text>
+    <text x="717" y="162" font-size="11.5" fill="#6B6258" text-anchor="middle">X-Tenant-ID</text>
+    <text x="717" y="180" font-size="11.5" fill="#6B6258" text-anchor="middle">ThreadLocal context</text>
+
+    <rect x="834" y="100" width="160" height="100" rx="12" fill="#FFFDF9" stroke="#D9D0C4"/>
+    <text x="914" y="140" font-size="13" font-weight="700" fill="#1C1917" text-anchor="middle">URL + method RBAC</text>
+    <text x="914" y="162" font-size="11.5" fill="#6B6258" text-anchor="middle">DELETE = ADMIN</text>
+    <text x="914" y="180" font-size="11.5" fill="#6B6258" text-anchor="middle">@PreAuthorize</text>
+
+    <rect x="1024" y="100" width="120" height="100" rx="12" fill="#F3EEFF" stroke="#5B21B6"/>
+    <text x="1084" y="140" font-size="12" font-weight="700" fill="#4C1D95" text-anchor="middle">C# key</text>
+    <text x="1084" y="162" font-size="11" fill="#6B6258" text-anchor="middle">not JWT</text>
+    <text x="1084" y="180" font-size="11" fill="#6B6258" text-anchor="middle">cluster secret</text>
+  </g>
+
+  <defs>
+    <marker id="sec" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#3F4A44"/></marker>
+  </defs>
+  <line x1="196" y1="150" x2="222" y2="150" stroke="#3F4A44" stroke-width="1.8" marker-end="url(#sec)"/>
+  <line x1="388" y1="150" x2="414" y2="150" stroke="#3F4A44" stroke-width="1.8" marker-end="url(#sec)"/>
+  <line x1="600" y1="150" x2="626" y2="150" stroke="#3F4A44" stroke-width="1.8" marker-end="url(#sec)"/>
+  <line x1="802" y1="150" x2="828" y2="150" stroke="#3F4A44" stroke-width="1.8" marker-end="url(#sec)"/>
+  <line x1="994" y1="150" x2="1018" y2="150" stroke="#5B21B6" stroke-width="1.8" marker-end="url(#sec)"/>
+
+  <rect x="36" y="228" width="1108" height="156" rx="12" fill="#FFFDF9" stroke="#D9D0C4"/>
+  <text x="56" y="258" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14" font-weight="700" fill="#1F3D32">Public vs private</text>
+  <text x="56" y="286" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#3F4A44">Open: /api/v1/auth/**  |  /api/v1/public/**  |  /ws handshake  |  Swagger  |  /uploads</text>
+  <text x="56" y="310" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#3F4A44">STOMP CONNECT still checks JWT. Public tracking uses a token (LANE-DEMO / LIVE-DEMO), not a user password.</text>
+  <text x="56" y="334" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#3F4A44">Webhooks can HMAC-sign payloads. AuditLogService.log() is async JSON of old/new values.</text>
+  <text x="56" y="358" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#3F4A44">Frontend ProtectedRoute mirrors API roles so the control room never shows screens the JWT cannot call.</text>
+</svg>

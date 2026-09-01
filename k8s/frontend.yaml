@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tms-frontend
+  namespace: tms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tms-frontend
+  template:
+    metadata:
+      labels:
+        app: tms-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: tms-frontend:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 20m
+              memory: 32Mi
+            limits:
+              cpu: 200m
+              memory: 64Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tms-frontend
+  namespace: tms
+spec:
+  type: NodePort
+  selector:
+    app: tms-frontend
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30080

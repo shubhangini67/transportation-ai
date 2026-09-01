@@ -1,0 +1,8 @@
+package com.tms.enums;
+
+public enum WebhookEventType {
+    TRIP_CREATED, TRIP_STATUS_CHANGED, TRIP_COMPLETED,
+    BOOKING_CREATED, BOOKING_CANCELLED,
+    LR_CREATED, LR_STATUS_CHANGED
+}
+

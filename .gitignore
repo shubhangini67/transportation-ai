@@ -1,0 +1,97 @@
+# ========================
+# Java / Maven (tms-backend)
+# ========================
+tms-backend/target/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+replay_pid*
+
+# ========================
+# Node / React (tms-frontend)
+# ========================
+tms-frontend/node_modules/
+tms-frontend/build/
+tms-frontend/.env
+tms-frontend/.env.local
+tms-frontend/.env.development.local
+tms-frontend/.env.test.local
+tms-frontend/.env.production.local
+
+# ========================
+# IDE / Editor
+# ========================
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+.factorypath
+nbproject/
+*.nbattrs
+.nb-gradle/
+
+# ========================
+# OS generated
+# ========================
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ========================
+# Logs
+# ========================
+*.log
+logs/
+spring.log
+
+# ========================
+# Environment / Secrets
+# ========================
+.env
+*.env.local
+.env.*
+!.env.example
+
+# ========================
+# File uploads (runtime)
+# ========================
+uploads/
+
+# ========================
+# Docker (local volumes)
+# ========================
+pgdata/
+docker-volumes/
+
+# ========================
+# Test output / Coverage
+# ========================
+tms-frontend/coverage/
+
+# ========================
+# .NET / ASP.NET (tms-dotnet-reports)
+# ========================
+tms-dotnet-reports/bin/
+tms-dotnet-reports/obj/
+*.user
+
+# ========================
+# Misc
+# ========================
+*.tmp
+*.bak
+*.orig
+*.patch

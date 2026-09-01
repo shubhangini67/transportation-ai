@@ -1,0 +1,10 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: tms
+nodes:
+  - role: control-plane
+    image: kindest/node:v1.32.2
+    extraPortMappings:
+      - containerPort: 30080
+        hostPort: 30080
+        protocol: TCP

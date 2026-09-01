@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tms-dotnet-reports
+  namespace: tms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tms-dotnet-reports
+  template:
+    metadata:
+      labels:
+        app: tms-dotnet-reports
+    spec:
+      containers:
+        - name: reports
+          image: tms-dotnet-reports:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_URLS
+              valueFrom:
+                configMapKeyRef:
+                  name: tms-config
+                  key: ASPNETCORE_URLS
+            - name: InternalApiKey
+              valueFrom:
+                secretKeyRef:
+                  name: tms-secrets
+                  key: InternalApiKey
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 8
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tms-dotnet-reports
+  namespace: tms
+spec:
+  selector:
+    app: tms-dotnet-reports
+  ports:
+    - port: 8080
+      targetPort: 8080

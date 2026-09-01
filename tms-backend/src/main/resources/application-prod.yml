@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/tmsdb}
+    driver-class-name: org.postgresql.Driver
+    username: ${DB_USERNAME:tms}
+    password: ${DB_PASSWORD:tms}
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+logging:
+  level:
+    com.tms: WARN

@@ -1,0 +1,43 @@
+# Build output
+target/
+
+# Java compiled
+*.class
+
+# Package files
+*.jar
+*.war
+*.ear
+*.nar
+
+# JVM crash logs
+hs_err_pid*
+replay_pid*
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.project
+.classpath
+.settings/
+.factorypath
+nbproject/
+
+# Logs
+*.log
+logs/
+spring.log
+
+# File uploads (runtime)
+uploads/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment / Secrets
+.env
+

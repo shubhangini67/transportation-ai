@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 820" role="img" aria-label="Low-level architecture">
+  <rect width="1180" height="820" rx="18" fill="#F6F1E8"/>
+  <rect x="1" y="1" width="1178" height="818" rx="18" fill="none" stroke="#E4D9C8" stroke-width="2"/>
+
+  <text x="40" y="46" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#1F3D32">Low-level architecture</text>
+  <text x="40" y="72" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6B6258">Layered request path inside Spring Boot, plus the only outbound call to the C# scoring service.</text>
+
+  <!-- L1 -->
+  <rect x="36" y="96" width="1108" height="92" rx="12" fill="#FFFDF9" stroke="#D9D0C4"/>
+  <rect x="36" y="96" width="8" height="92" rx="4" fill="#0F766E"/>
+  <text x="60" y="122" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#0F766E" letter-spacing="1.4">L1  CLIENT</text>
+  <rect x="60" y="136" width="200" height="36" rx="8" fill="#E7F4F2" stroke="#B7D9D4"/>
+  <text x="76" y="159" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#134E4A">Pages  (RBAC routes)</text>
+  <rect x="276" y="136" width="220" height="36" rx="8" fill="#E7F4F2" stroke="#B7D9D4"/>
+  <text x="292" y="159" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#134E4A">src/services  |  Axios</text>
+  <rect x="512" y="136" width="200" height="36" rx="8" fill="#E7F4F2" stroke="#B7D9D4"/>
+  <text x="528" y="159" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#134E4A">AuthContext + refresh</text>
+  <rect x="728" y="136" width="180" height="36" rx="8" fill="#E7F4F2" stroke="#B7D9D4"/>
+  <text x="744" y="159" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#134E4A">STOMP  SockJS</text>
+  <rect x="924" y="136" width="196" height="36" rx="8" fill="#E7F4F2" stroke="#B7D9D4"/>
+  <text x="940" y="159" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#134E4A">X-Tenant-ID header</text>
+
+  <!-- L2 -->
+  <rect x="36" y="204" width="1108" height="78" rx="12" fill="#FFFDF9" stroke="#D9D0C4"/>
+  <rect x="36" y="204" width="8" height="78" rx="4" fill="#059669"/>
+  <text x="60" y="230" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#059669" letter-spacing="1.4">L2  INGRESS  (Nginx in the frontend image)</text>
+  <rect x="60" y="244" width="250" height="24" rx="6" fill="#ECFDF5"/>
+  <text x="72" y="261" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#065F46">location /  |  React SPA</text>
+  <rect x="326" y="244" width="290" height="24" rx="6" fill="#ECFDF5"/>
+  <text x="338" y="261" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#065F46">location /api/  |  tms-backend:8080</text>
+  <rect x="632" y="244" width="280" height="24" rx="6" fill="#ECFDF5"/>
+  <text x="644" y="261" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#065F46">location /ws/  |  WebSocket upgrade</text>
+  <rect x="928" y="244" width="192" height="24" rx="6" fill="#ECFDF5"/>
+  <text x="940" y="261" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#065F46">/swagger-ui  proxy</text>
+
+  <!-- L3 -->
+  <rect x="36" y="298" width="1108" height="92" rx="12" fill="#FFFDF9" stroke="#D9D0C4"/>
+  <rect x="36" y="298" width="8" height="92" rx="4" fill="#C45C26"/>
+  <text x="60" y="324" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#C45C26" letter-spacing="1.4">L3  SECURITY FILTERS</text>
+  <rect x="60" y="338" width="210" height="36" rx="8" fill="#FDF0E9" stroke="#E8C4AE"/>
+  <text x="76" y="361" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#7C2D12">TenantFilter</text>
+  <text x="280" y="361" font-size="16" fill="#C45C26">|</text>
+  <rect x="308" y="338" width="250" height="36" rx="8" fill="#FDF0E9" stroke="#E8C4AE"/>
+  <text x="324" y="361" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#7C2D12">JwtAuthenticationFilter</text>
+  <text x="568" y="361" font-size="16" fill="#C45C26">|</text>
+  <rect x="596" y="338" width="230" height="36" rx="8" fill="#FDF0E9" stroke="#E8C4AE"/>
+  <text x="612" y="361" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#7C2D12">@PreAuthorize  RBAC</text>
+  <text x="836" y="361" font-size="16" fill="#C45C26">|</text>
+  <rect x="864" y="338" width="256" height="36" rx="8" fill="#FDF0E9" stroke="#E8C4AE"/>
+  <text x="880" y="361" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#7C2D12">Controller  (thin)</text>
+
+  <!-- L4 -->
+  <rect x="36" y="406" width="1108" height="132" rx="12" fill="#FFFDF9" stroke="#D9D0C4"/>
+  <rect x="36" y="406" width="8" height="132" rx="4" fill="#1F3D32"/>
+  <text x="60" y="432" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#1F3D32" letter-spacing="1.4">L4  APPLICATION  (Controller | Service | Repository)</text>
+  <rect x="60" y="448" width="170" height="70" rx="8" fill="#E8F0EC" stroke="#B7C9BF"/>
+  <text x="76" y="476" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#1F3D32">Controller</text>
+  <text x="76" y="496" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11.5" fill="#5C5348">ApiResponse wrapper</text>
+  <rect x="250" y="448" width="170" height="70" rx="8" fill="#E8F0EC" stroke="#B7C9BF"/>
+  <text x="266" y="476" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#1F3D32">Service</text>
+  <text x="266" y="496" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11.5" fill="#5C5348">toResponse()  DTOs</text>
+  <rect x="440" y="448" width="170" height="70" rx="8" fill="#E8F0EC" stroke="#B7C9BF"/>
+  <text x="456" y="476" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#1F3D32">Repository</text>
+  <text x="456" y="496" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11.5" fill="#5C5348">Spring Data JPA</text>
+  <rect x="630" y="448" width="170" height="70" rx="8" fill="#E8F0EC" stroke="#B7C9BF"/>
+  <text x="646" y="476" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#1F3D32">Entity</text>
+  <text x="646" y="496" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11.5" fill="#5C5348">extends Auditable</text>
+  <rect x="820" y="448" width="300" height="70" rx="8" fill="#E8F0EC" stroke="#B7C9BF"/>
+  <text x="836" y="476" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#1F3D32">Never return JPA entities</text>
+  <text x="836" y="496" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11.5" fill="#5C5348">GlobalExceptionHandler  |  custom errors</text>
+
+  <!-- L5 -->
+  <rect x="36" y="554" width="1108" height="118" rx="12" fill="#FFFDF9" stroke="#D9D0C4"/>
+  <rect x="36" y="554" width="8" height="118" rx="4" fill="#5B21B6"/>
+  <text x="60" y="580" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#5B21B6" letter-spacing="1.4">L5  INTEGRATIONS  (from Service)</text>
+  <rect x="60" y="596" width="200" height="56" rx="8" fill="#F3EEFF" stroke="#D4C6F0"/>
+  <text x="76" y="620" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" font-weight="700" fill="#4C1D95">DotNetReportsClient</text>
+  <text x="76" y="638" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#6B6258">internal API key</text>
+  <rect x="276" y="596" width="180" height="56" rx="8" fill="#F3EEFF" stroke="#D4C6F0"/>
+  <text x="292" y="620" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" font-weight="700" fill="#4C1D95">STOMP broker</text>
+  <text x="292" y="638" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#6B6258">/topic/vehicle.*</text>
+  <rect x="472" y="596" width="180" height="56" rx="8" fill="#F3EEFF" stroke="#D4C6F0"/>
+  <text x="488" y="620" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" font-weight="700" fill="#4C1D95">GeofenceService</text>
+  <text x="488" y="638" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#6B6258">Haversine check</text>
+  <rect x="668" y="596" width="160" height="56" rx="8" fill="#F3EEFF" stroke="#D4C6F0"/>
+  <text x="684" y="620" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" font-weight="700" fill="#4C1D95">AiCopilot</text>
+  <text x="684" y="638" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#6B6258">live TMS facts</text>
+  <rect x="844" y="596" width="140" height="56" rx="8" fill="#F3EEFF" stroke="#D4C6F0"/>
+  <text x="860" y="620" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" font-weight="700" fill="#4C1D95">OpenPDF</text>
+  <text x="860" y="638" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#6B6258">LR + invoice</text>
+  <rect x="1000" y="596" width="120" height="56" rx="8" fill="#F3EEFF" stroke="#D4C6F0"/>
+  <text x="1014" y="620" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" font-weight="700" fill="#4C1D95">Webhooks</text>
+  <text x="1014" y="638" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#6B6258">retry + HMAC</text>
+
+  <!-- L6 -->
+  <rect x="36" y="688" width="1108" height="100" rx="12" fill="#FFFDF9" stroke="#D9D0C4"/>
+  <rect x="36" y="688" width="8" height="100" rx="4" fill="#336791"/>
+  <text x="60" y="714" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#336791" letter-spacing="1.4">L6  DATA</text>
+  <rect x="60" y="728" width="250" height="40" rx="8" fill="#E8F1F8" stroke="#B4C9DA"/>
+  <text x="76" y="753" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#1E3A5F">PostgreSQL 16  (prod profile)</text>
+  <rect x="326" y="728" width="220" height="40" rx="8" fill="#E8F1F8" stroke="#B4C9DA"/>
+  <text x="342" y="753" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#1E3A5F">Flyway  V1-V13</text>
+  <rect x="562" y="728" width="260" height="40" rx="8" fill="#E8F1F8" stroke="#B4C9DA"/>
+  <text x="578" y="753" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#1E3A5F">H2 + DataSeeder  (dev profile)</text>
+  <rect x="838" y="728" width="282" height="40" rx="8" fill="#E8F1F8" stroke="#B4C9DA"/>
+  <text x="854" y="753" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#1E3A5F">tenant_id on most tables</text>
+</svg>

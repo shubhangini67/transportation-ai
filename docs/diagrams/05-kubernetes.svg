@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 620" role="img" aria-label="Kubernetes Kind deployment">
+  <rect width="1180" height="620" rx="18" fill="#F6F1E8"/>
+  <rect x="1" y="1" width="1178" height="618" rx="18" fill="none" stroke="#E4D9C8" stroke-width="2"/>
+
+  <text x="40" y="46" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#1F3D32">Deployment architecture - Kind cluster tms</text>
+  <text x="40" y="72" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6B6258">Same four images as Docker Compose. Manifests live in k8s/. Laptop URL is NodePort 30080.</text>
+
+  <rect x="36" y="96" width="1108" height="420" rx="16" fill="#E8EEF8" stroke="#B7C4DE"/>
+  <text x="56" y="128" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#326CE5" letter-spacing="1.2">KIND NODE  |  namespace tms</text>
+
+  <!-- browser -->
+  <rect x="56" y="148" width="160" height="64" rx="10" fill="#FFFDF9" stroke="#D9D0C4"/>
+  <text x="136" y="176" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#1C1917" text-anchor="middle">Browser</text>
+  <text x="136" y="196" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#6B6258" text-anchor="middle">localhost:30080</text>
+
+  <defs>
+    <marker id="k" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#326CE5"/></marker>
+  </defs>
+  <line x1="216" y1="180" x2="268" y2="180" stroke="#326CE5" stroke-width="2" marker-end="url(#k)"/>
+
+  <!-- frontend pod -->
+  <rect x="276" y="140" width="220" height="200" rx="12" fill="#FFFDF9" stroke="#0F766E" stroke-width="1.6"/>
+  <rect x="276" y="140" width="220" height="36" fill="#0F766E" rx="12"/>
+  <rect x="276" y="160" width="220" height="16" fill="#0F766E"/>
+  <text x="386" y="164" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#FFF" text-anchor="middle">Pod  tms-frontend</text>
+  <text x="296" y="204" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#1C1917">Nginx + React build</text>
+  <text x="296" y="226" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#5C5348">container :80</text>
+  <text x="296" y="252" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#5C5348">Service NodePort 30080</text>
+  <text x="296" y="274" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#5C5348">readiness GET /</text>
+  <text x="296" y="310" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#0F766E">image tms-frontend:local</text>
+
+  <line x1="496" y1="220" x2="548" y2="220" stroke="#326CE5" stroke-width="2" marker-end="url(#k)"/>
+  <text x="506" y="210" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10.5" fill="#326CE5">/api /ws</text>
+
+  <!-- backend pod -->
+  <rect x="556" y="120" width="240" height="248" rx="12" fill="#FFFDF9" stroke="#1F3D32" stroke-width="1.6"/>
+  <rect x="556" y="120" width="240" height="36" fill="#1F3D32" rx="12"/>
+  <rect x="556" y="140" width="240" height="16" fill="#1F3D32"/>
+  <text x="676" y="144" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#FFF" text-anchor="middle">Pod  tms-backend</text>
+  <text x="576" y="184" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#1C1917">Spring Boot  :8080</text>
+  <text x="576" y="206" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#5C5348">init: wait-for-postgres</text>
+  <text x="576" y="228" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#5C5348">ConfigMap + Secret env</text>
+  <text x="576" y="250" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#5C5348">readiness /v3/api-docs</text>
+  <text x="576" y="272" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#5C5348">HPA  CPU 70%  1-2 replicas</text>
+  <text x="576" y="308" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#1F3D32">ClusterIP tms-backend:8080</text>
+  <text x="576" y="344" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#6B6258">image tms-backend:local</text>
+
+  <line x1="796" y1="180" x2="848" y2="180" stroke="#326CE5" stroke-width="2" marker-end="url(#k)"/>
+  <text x="800" y="170" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10.5" fill="#326CE5">JPA</text>
+
+  <line x1="796" y1="300" x2="848" y2="360" stroke="#5B21B6" stroke-width="2" marker-end="url(#k)"/>
+  <text x="800" y="340" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10.5" fill="#5B21B6">snapshot</text>
+
+  <!-- postgres -->
+  <rect x="856" y="120" width="260" height="150" rx="12" fill="#FFFDF9" stroke="#336791" stroke-width="1.6"/>
+  <rect x="856" y="120" width="260" height="36" fill="#336791" rx="12"/>
+  <rect x="856" y="140" width="260" height="16" fill="#336791"/>
+  <text x="986" y="144" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#FFF" text-anchor="middle">Pod  tms-postgres</text>
+  <text x="876" y="184" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#1C1917">PostgreSQL 16  :5432</text>
+  <text x="876" y="206" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#5C5348">PersistentVolumeClaim</text>
+  <text x="876" y="228" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#5C5348">ClusterIP  tms-postgres</text>
+  <text x="876" y="250" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#336791">do not bounce this pod on demo</text>
+
+  <!-- dotnet -->
+  <rect x="856" y="300" width="260" height="150" rx="12" fill="#FFFDF9" stroke="#5B21B6" stroke-width="1.6"/>
+  <rect x="856" y="300" width="260" height="36" fill="#5B21B6" rx="12"/>
+  <rect x="856" y="320" width="260" height="16" fill="#5B21B6"/>
+  <text x="986" y="324" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#FFF" text-anchor="middle">Pod  tms-dotnet-reports</text>
+  <text x="876" y="364" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#1C1917">ASP.NET Core 8  :8080</text>
+  <text x="876" y="386" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#5C5348">/health  |  InternalApiKey</text>
+  <text x="876" y="408" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#5C5348">HPA  CPU 70%  1-2 replicas</text>
+  <text x="876" y="430" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#5B21B6">ClusterIP only - not on NodePort</text>
+
+  <rect x="36" y="536" width="1108" height="56" rx="10" fill="#FFFDF9" stroke="#D9D0C4"/>
+  <text x="56" y="560" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#3F4A44">Apply: kubectl apply -k k8s/   |   kind-config.yaml   namespace   configmap   secret   postgres   backend   frontend   dotnet-reports   hpa</text>
+  <text x="56" y="580" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#3F4A44">Compose equivalent: frontend :80  |  backend :8080  |  C# :5080  |  Postgres :5432</text>
+</svg>

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 480" role="img" aria-label="Realtime GPS and geofence flow">
+  <rect width="1180" height="480" rx="18" fill="#F6F1E8"/>
+  <rect x="1" y="1" width="1178" height="478" rx="18" fill="none" stroke="#E4D9C8" stroke-width="2"/>
+
+  <text x="40" y="46" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#1F3D32">Realtime architecture - GPS, geofences, alerts</text>
+  <text x="40" y="72" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6B6258">Every location ping writes history, fans out on WebSocket, then checks circular zones with Haversine.</text>
+
+  <!-- step boxes -->
+  <rect x="36" y="108" width="210" height="150" rx="14" fill="#FFFDF9" stroke="#D9D0C4"/>
+  <circle cx="60" cy="132" r="12" fill="#1F3D32"/>
+  <text x="60" y="137" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#FFF" text-anchor="middle">1</text>
+  <text x="80" y="137" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#1C1917">Ingest</text>
+  <text x="52" y="172" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">REST</text>
+  <text x="52" y="192" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6B6258">POST /vehicles/{id}/location</text>
+  <text x="52" y="220" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">or STOMP</text>
+  <text x="52" y="240" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6B6258">/app/location.update</text>
+
+  <rect x="278" y="108" width="210" height="150" rx="14" fill="#FFFDF9" stroke="#D9D0C4"/>
+  <circle cx="302" cy="132" r="12" fill="#1F3D32"/>
+  <text x="302" y="137" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#FFF" text-anchor="middle">2</text>
+  <text x="322" y="137" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#1C1917">Persist</text>
+  <text x="294" y="180" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">VehicleLocationService</text>
+  <text x="294" y="204" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6B6258">breadcrumb row</text>
+  <text x="294" y="224" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6B6258">vehicle_location_history</text>
+
+  <rect x="520" y="108" width="210" height="150" rx="14" fill="#FFFDF9" stroke="#D9D0C4"/>
+  <circle cx="544" cy="132" r="12" fill="#0F766E"/>
+  <text x="544" y="137" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#FFF" text-anchor="middle">3</text>
+  <text x="564" y="137" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#1C1917">Broadcast</text>
+  <text x="536" y="180" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">STOMP topic</text>
+  <text x="536" y="204" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6B6258">/topic/vehicle.{id}</text>
+  <text x="536" y="228" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6B6258">Live map + trip tracking</text>
+
+  <rect x="762" y="108" width="210" height="150" rx="14" fill="#FFFDF9" stroke="#D9D0C4"/>
+  <circle cx="786" cy="132" r="12" fill="#C45C26"/>
+  <text x="786" y="137" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#FFF" text-anchor="middle">4</text>
+  <text x="806" y="137" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#1C1917">Geofence</text>
+  <text x="778" y="180" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#3F4A44">Haversine vs radius</text>
+  <text x="778" y="204" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6B6258">DEPOT | RESTRICTED</text>
+  <text x="778" y="224" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6B6258">DELIVERY | CUSTOM</text>
+
+  <rect x="1004" y="108" width="140" height="150" rx="14" fill="#FFFDF9" stroke="#D9D0C4"/>
+  <circle cx="1028" cy="132" r="12" fill="#5B21B6"/>
+  <text x="1028" y="137" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#FFF" text-anchor="middle">5</text>
+  <text x="1046" y="137" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#1C1917">Alert</text>
+  <text x="1020" y="180" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#3F4A44">GeofenceEvent</text>
+  <text x="1020" y="204" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6B6258">push ADMIN</text>
+  <text x="1020" y="224" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6B6258">+ DISPATCHER</text>
+
+  <defs>
+    <marker id="g" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#3F4A44"/></marker>
+  </defs>
+  <line x1="246" y1="183" x2="272" y2="183" stroke="#3F4A44" stroke-width="2" marker-end="url(#g)"/>
+  <line x1="488" y1="183" x2="514" y2="183" stroke="#3F4A44" stroke-width="2" marker-end="url(#g)"/>
+  <line x1="730" y1="183" x2="756" y2="183" stroke="#3F4A44" stroke-width="2" marker-end="url(#g)"/>
+  <line x1="972" y1="183" x2="998" y2="183" stroke="#3F4A44" stroke-width="2" marker-end="url(#g)"/>
+
+  <rect x="36" y="286" width="1108" height="160" rx="12" fill="#FFFDF9" stroke="#D9D0C4"/>
+  <text x="56" y="318" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14" font-weight="700" fill="#1F3D32">Also on this path</text>
+  <text x="56" y="348" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#3F4A44">JWT is validated on STOMP CONNECT - the socket is not anonymous.</text>
+  <text x="56" y="372" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#3F4A44">NotificationService.createAndPush() writes an in-app row and sends /user/queue/notifications (Navbar bell).</text>
+  <text x="56" y="396" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#3F4A44">History APIs: GET /trips/{id}/route-history  |  GET /vehicles/{id}/location-history</text>
+  <text x="56" y="420" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#3F4A44">Public track (no login): /track/LANE-DEMO and /track/LIVE-DEMO read a token, not a session.</text>
+</svg>
